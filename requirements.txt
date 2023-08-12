@@ -5,3 +5,5 @@ filterpy
 opencv-python
 cvzone 
 ultralytics
+deep-sort-realtime
+tensorflow==2.0.8
