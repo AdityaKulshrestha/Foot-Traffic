@@ -12,7 +12,7 @@ else:
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # SERVER IP ADDRESS
-host_ip = '192.168.142.189'  # Here enter the ip address according to your server
+host_ip = '127.0.0.1'  # Here enter the ip address according to your server
 port = 12345
 
 client_socket.connect((host_ip, port))
@@ -32,5 +32,4 @@ while client_socket and vid.isOpened():
     except:
         print("VIDEO FINISHED!")
         break
-
 
