@@ -1,35 +1,19 @@
 import csv
-import time
+import os
+from datetime import datetime
+
+FILENAME = 'database/output.csv'
 
 
-def log_data(move_in, in_time, move_out, out_time):
-    # function to log the counting data
-    data = [move_in, in_time, move_out, out_time]
-    # transpose the data to align the columns properly
+def write_to_csv(count, include_header=False):
+    file_exists = os.path.exists(FILENAME)
+    with open(FILENAME, mode='a+', newline='') as csvfile:
+        writer = csv.writer(csvfile)
 
-    with open('utils/data/logs/counting_data.csv', 'w', newline='') as myfile:
-        wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
-        if myfile.tell() == 0:  # check if header rows are already existing
-            wr.writerow(("Move In", "In Time", "Move Out", "Out Time"))
-            wr.writerows(data)
+        if not file_exists or include_header:
+            writer.writerow(['people_count','date', 'time'])
 
-
-
-def count_fps(prev_frame_time)
-    new_frame_time = time.time()
-
-    # Calculating the fps
-
-    # fps will be number of frame processed in given time frame
-    # since their will be most of time error of 0.001 second
-    # we will be subtracting it to get more accurate result
-    fps = 1 / (new_frame_time - prev_frame_time)
-    prev_frame_time = new_frame_time
-
-    # converting the fps into integer
-    fps = int(fps)
-
-    # converting the fps to string so that we can display it on frame
-    # by using putText function
-    fps = str(fps)
-
+        current_datetime = datetime.now()
+        date_str = current_datetime.strftime("%Y-%m-%d")
+        time_str = current_datetime.strftime("%H:%M:%S")
+        writer.writerow([count, date_str, time_str])

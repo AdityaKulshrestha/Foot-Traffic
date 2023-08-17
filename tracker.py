@@ -48,7 +48,6 @@ class Tracker:
             if not track.is_confirmed() or track.time_since_update > 1:
                 continue
             bbox = track.to_tlbr()
-
             id = track.track_id
 
             tracks.append(Track(id, bbox))

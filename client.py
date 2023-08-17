@@ -8,7 +8,7 @@ camera = False
 if camera:
     vid = cv2.VideoCapture(0)
 else:
-    vid = cv2.VideoCapture('test_videos/test3.mp4')
+    vid = cv2.VideoCapture('test_videos/test.mp4')
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # SERVER IP ADDRESS
